@@ -1,0 +1,16 @@
+<!--users/templates/users/dashboard.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  body {
+    background-color:#F38E61;
+    background-image: linear-gradient(#F3B861, #F38E61);
+    background-repeat: no-repeat;
+  }
+</style>
+
+Hello, {{ user.username|default:'Guest' }}!
+{% endblock %}

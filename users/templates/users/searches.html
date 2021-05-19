@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <style>
+    body {
+      background-color:#F38E61;
+      background-image: linear-gradient(#F3B861, #F38E61);
+      background-repeat: no-repeat;
+    }
+  </style>
+
+  {% if user.is_authenticated and user.is_superuser %}
+      <h3>Shoe criteria searches by all users</h3>
+      {% for search in searches %}
+        <br>
+        Search time: {{search.createdOn}} <br>
+        Username: {{search.userID.username}} <br>
+        Phrase: {{search.phrase}} <br>
+        Size: {{search.size}} <br>
+      {% endfor %}
+  {% endif %}
+
+  {% endblock content %}

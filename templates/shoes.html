@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <style>
+    .shoeTable {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%
+    }
+    body {
+      background-color:#F38E61;
+      background-image: linear-gradient(#F3B861, #F38E61);
+      background-repeat: no-repeat;
+    }
+  </style>
+  
+  <center>
+  <a href="{% url 'home' %}"><h1>Jimmy's Lefties</h1></a>
+  <h1>Shoes</h1>
+  Search Criteria, 
+   {% if shoeForm == "NA" %}
+    <strong>All Shoes</strong>
+   {% endif %}
+  {% if shoeForm.phrase != None and shoeForm.phrase != "" %}
+    phrase: <strong>{{ shoeForm.phrase }}</strong>,
+  {% endif %} 
+  {% if shoeForm.size != None %}
+    size: <strong>{{ shoeForm.size }}</strong>
+  {% endif %}  
+  <br><br>
+  <img width="400" src="{% static 'images/barchart.jpeg' %}" alt="Shoe Size Data Bar Chart">
+  <br>
+  <h3>{{ shoeCount }} shoe listings found</h3>
+  <table class="shoeTable">
+  {% for shoe, shoe2 in shoes %}
+      <tr>
+        <td>
+          <center>
+    <span>Title: {{ shoe.title }}<br></span>
+    {% if shoe.description != None and shoe.description|length != 0 %}
+      <span>Desctripion: {{shoe.description}}<br></span>
+    {% endif %}
+    {% if shoe.brand != None %}
+      <span> Brand: {{ shoe.brand }}<br></span>
+    {% endif %}
+    {% if shoe.length != None %}
+      <span>Size1: {{ shoe.length }}<br></span>
+    {% endif %}
+    {% if shoe.length2 != None %}
+      <span>Size2: {{ shoe.length2 }}<br></span>
+    {% endif %}
+    {% if shoe.width != None %}
+      <span>Width: {{ shoe.width }}<br></span>
+    {% endif %}
+    {% if shoe.foot != None %}
+      <span>Foot: {{ shoe.foot }}<br></span>
+    {% endif %}
+    {% if shoe.sex != None %}
+      <span>Sex: {{ shoe.sex }}<br></span>
+    {% endif %}
+    {% if shoe.color != None %}
+      <span>Color: {{ shoe.color }}<br></span>
+    {% endif %}
+    {% if shoe.imageURL != None %}
+      <span><img src={{ shoe.imageURL }} width=200></img><br></span>
+    {% endif %}
+    {% if shoe.purchaseURL != None %}
+      <span><a href={{ shoe.purchaseURL }}>Purchase URL</a><br></span>
+    {% endif %}
+    <br><br>
+        </center>
+        </td>
+      
+
+        <td>
+          <center>
+    {% if shoe2.title %}
+      <span>Title: {{ shoe2.title }}<br></span>
+    {% endif %}
+    {% if shoe2.description != None and shoe2.description|length != 0 %}
+      <span>Desctripion: {{shoe2.description}}<br></span>
+    {% endif %}
+    {% if shoe2.brand != None %}
+      <span> Brand: {{ shoe2.brand }}<br></span>
+    {% endif %}
+    {% if shoe2.length != None %}
+      <span>Size1: {{ shoe2.length }}<br></span>
+    {% endif %}
+    {% if shoe2.length2 != None %}
+      <span>Size2: {{ shoe2.length2 }}<br></span>
+    {% endif %}
+    {% if shoe2.width != None %}
+      <span>Width: {{ shoe2.width }}<br></span>
+    {% endif %}
+    {% if shoe2.foot != None %}
+      <span>Foot: {{ shoe2.foot }}<br></span>
+    {% endif %}
+    {% if shoe2.sex != None %}
+      <span>Sex: {{ shoe2.sex }}<br></span>
+    {% endif %}
+    {% if shoe2.color != None %}
+      <span>Color: {{ shoe2.color }}<br></span>
+    {% endif %}
+    {% if shoe2.imageURL != None %}
+      <span><img src={{ shoe2.imageURL }} width=200></img><br></span>
+    {% endif %}
+    {% if shoe2.purchaseURL != None %}
+      <span><a href={{ shoe2.purchaseURL }}>Purchase URL</a><br></span>
+    {% endif %}
+    <br><br>
+      </center>
+        </td>
+      
+      </tr>
+  {% endfor %}
+  </table>
+  </center>
+{% endblock content %}

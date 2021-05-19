@@ -1,0 +1,28 @@
+<!--users/templates/users/register.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  body {
+    background-color:#F38E61;
+    background-image: linear-gradient(#F3B861, #F38E61);
+    background-repeat: no-repeat;
+  }
+</style>
+<center>
+  <a href="{% url 'home' %}"><h1>Jimmy's Lefties</h1></a>
+  <h2>Register for Jimmy's Lefties</h2>
+</center>
+<div style="width: 60%; margin: auto;">
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <br><br>
+    <input type="submit" value="Register">
+    <br><br>
+</form>
+<a href="{% url 'login' %}">Back to login</a>
+</div>
+{% endblock %}

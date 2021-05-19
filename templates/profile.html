@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  body {
+    background-color:#F38E61;
+    background-image: linear-gradient(#F3B861, #F38E61);
+    background-repeat: no-repeat;
+  }
+</style>
+
+
+<center>
+<div width="70%">
+<a href="{% url 'home' %}"><h1>Jimmy's Lefties</h1></a>
+  {% if user.is_authenticated %}
+      <h3>{{user.username}}'s Profile</h3>
+      <a href="{% url 'password_change' %}">Change password</a><br>
+      <a href="{% url 'logout' %}">Logout</a><br>
+      {% if user.is_superuser %}
+        <br>
+        <a href="{% url 'searches' %}">View All Site Searches</a><br><br>
+        <h4>All Profiles</h4>
+      {% endif %}
+      {% for siteUser in siteUsers %}
+        <h4>Profile Information</h4>
+        Username: {{siteUser.username}}<br>
+        Firstname: {{siteUser.firstname}}<br>
+        Lastname: {{siteUser.lastname}}<br>
+        Email: {{siteUser.email}}<br>
+        Leftsize: {{siteUser.leftSize}}<br>
+        Rightsize: {{siteUser.rightSize}}<br>
+        Leftwidth: {{siteUser.leftWidth}}<br>
+        Rightwifth: {{siteUser.rightWidth}}<br>
+        Prefered Shoe Style: {{siteUser.sex}}<br>
+      {% endfor %}
+  {% endif %}
+</div>
+</center>
+{% endblock content %}
